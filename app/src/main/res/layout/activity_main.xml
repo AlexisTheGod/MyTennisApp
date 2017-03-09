@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.mytennisapp.MainActivity"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<Button
+    android:id="@+id/RESET"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerInParent="true"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="22dp"
+    android:layout_marginRight="22dp"
+    android:onClick="resetScore"
+    android:text="RESET" />
+
+<TextView
+    android:id="@+id/gameName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:fontFamily="sans-serif-medium"
+    android:gravity="center_horizontal"
+    android:padding="5dp"
+    android:text="Game: 1"
+    android:textColor="#000000"
+    android:textSize="20sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/gameName"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="Player A - 0"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            android:id="@+id/playerA"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/player_a_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textColor="#000000"
+                android:textSize="56sp"/>
+
+            <TextView
+                android:id="@+id/player_a_advantage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBottom="@id/player_a_score"
+                android:layout_marginLeft="110dp"
+                android:background="@drawable/green_c"
+                android:fontFamily="sans-serif-light"
+                android:text="A"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/player_a_fault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:text="FAULT"
+            android:textColor="#B71C1C"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:onClick="addPointA"
+            android:text="Win Point" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:id="@+id/btnFaultA"
+            android:onClick="faultA"
+            android:text="Fault"
+            android:enabled="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/tennisraquetandball"
+            android:scaleType="fitCenter"
+            android:id="@+id/serveA"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/grayLine"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="Player B - 0"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            android:id="@+id/playerB" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/player_b_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textColor="#000000"
+                android:textSize="56sp"/>
+
+            <TextView
+                android:id="@+id/player_b_advantage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBottom="@id/player_b_score"
+                android:layout_marginLeft="110dp"
+                android:background="@drawable/green_c"
+                android:fontFamily="sans-serif-light"
+                android:text="A"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/player_b_fault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:text="FAULT"
+            android:textColor="#B71C1C"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:onClick="addPointB"
+            android:text="Win Point" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:onClick="faultB"
+            android:text="Fault"
+            android:id="@+id/btnFaultB"
+            android:enabled="false"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/tennisraquetandball"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            android:id="@+id/serveB"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+</RelativeLayout>
