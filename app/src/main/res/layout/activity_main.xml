@@ -108,7 +108,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:onClick="addPointA"
+            android:onClick="addPointOne"
             android:text="Win Point" />
 
         <Button

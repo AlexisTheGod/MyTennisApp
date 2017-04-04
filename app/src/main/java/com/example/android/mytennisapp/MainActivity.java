@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     int faultCheckA = 0;
     int faultCheckB = 0;
 
+    //declare views here
+    TextView scoreViewA = (TextView) findViewById(R.id.player_a_score);
+    TextView scoreViewB = (TextView) findViewById(R.id.player_b_score);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +92,92 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         ad.show();
     }
+
+    /**
+     * Method for adding a point to player A
+     */
+    public void addPointOne(){
+        player_a_score = addPoint(player_a_score,player_b_score);
+    }
+
+    /**
+     *
+     * @param scoreOne denotes the scorer of the point
+     * @param scoreTwo is used for checking
+     */
+    public int addPoint(int scoreOne, int scoreTwo) {
+        //cancel penging faults
+        //make faults invisible
+
+        if (scoreOne == 0) {
+            scoreOne = 15;
+            displayScores(scoreOne,scoreTwo);
+            return scoreOne;
+
+        } else if (scoreOne == 15) {
+            scoreOne = 30;
+            displayScores(scoreOne,scoreTwo);
+
+        } else if (scoreOne == 30) {
+            if (scoreTwo == 40) {
+                Duce(null);
+            }
+            scoreOne = 40;
+            displayScores(scoreOne,scoreTwo);
+
+        } else if (scoreOne == 40) {
+            if (scoreTwo < 40) {
+                gameA = gameA + 1;
+                player_a_score = 0;
+                player_b_score = 0;
+                advA = 0;
+                advB = 0;
+                TextView advView = (TextView) findViewById(R.id.player_a_advantage);
+                advView.setVisibility(View.INVISIBLE);
+                TextView advView2 = (TextView) findViewById(R.id.player_b_advantage);
+                advView2.setVisibility(View.INVISIBLE);
+                changeServe(null);
+
+            } else if (advB == 1) {
+                advB = 0;
+                TextView advView2 = (TextView) findViewById(R.id.player_b_advantage);
+                advView2.setVisibility(View.INVISIBLE);
+            } else if (advA == 1) {
+                gameA = gameA + 1;
+                player_a_score = 0;
+                player_b_score = 0;
+                advA = 0;
+                advB = 0;
+                TextView advView = (TextView) findViewById(R.id.player_a_advantage);
+                advView.setVisibility(View.INVISIBLE);
+                TextView advView2 = (TextView) findViewById(R.id.player_b_advantage);
+                advView2.setVisibility(View.INVISIBLE);
+                changeServe(null);
+
+            } else if (advA == 0) {
+                advA = 1;
+                advB = 0;
+                TextView advView = (TextView) findViewById(R.id.player_a_advantage);
+                advView.setVisibility(VISIBLE);
+                TextView advView2 = (TextView) findViewById(R.id.player_b_advantage);
+                advView2.setVisibility(View.INVISIBLE);
+                displayForTeamA(player_a_score);
+                displayForTeamB(player_b_score);
+            }
+
+            displayForTeamA(player_a_score);
+            displayForTeamB(player_b_score);
+            String games = "Game: " + (gameA + gameB + 1);
+            displayGame(games);
+            String gamesA = "Player A - " + gameA;
+            displayGameA(gamesA);
+            String gamesB = "Player B - " + gameB;
+            displayGameB(gamesB);
+
+        }
+
+    }
+
 
     /**
      * Increase the score for Player A.
@@ -336,6 +427,11 @@ public class MainActivity extends AppCompatActivity {
     public void displayGameB(String game) {
         TextView gameView = (TextView) findViewById(playerB);
         gameView.setText(String.valueOf(game));
+    }
+
+    public void displayScores(int scoreOne, int scoreTwo){
+        scoreViewA.setText(String.valueOf(scoreOne));
+        scoreViewB.setText(String.valueOf(scoreTwo));
     }
 
     /**
